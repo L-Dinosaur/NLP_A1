@@ -77,6 +77,7 @@ def twtt7(string):
 
     string = re.sub(' +', ' ', string)                  # merge extra spaces into one
 
+
     return string
 
 
@@ -96,7 +97,11 @@ def twtt8(string):
 
 
 def twtt9(string, mood):
-    res = '<A=' + str(mood) + '>\n' + string
+    res = '<A=' + str(mood) + '>'
+    if(len(string) == 0):
+        return res
+    if(res[-1] != "\n"):
+        res += "\n" + string
     return res
 
 def twtt(string, mood):
@@ -109,9 +114,9 @@ import csv
 import random
 import NLPlib as nb
 import sys
-#import time
+import time
 
-
+time1 = time.time()
 try:
     f = open(sys.argv[1], 'rt')
     rd = csv.reader(f)
@@ -119,6 +124,7 @@ try:
     strlis = []
     x1 = (int(sys.argv[2]) % 80) * 10000
     x2 = x1 + 800000
+    time2 = time.time()
     for row in rd:
         i += 1
         if(((i >= x1) and (i <= (x1 + 9999))) or ((i >= x2) and (i <= (x2 + 9999)))):
@@ -126,17 +132,18 @@ try:
 
         if(i >= 1330000):
             break
+    time3 = time.time()
 finally:
     f.close()
 
-d = open(sys.argv[3], 'w+')
-for i in range(100):
+d = open(sys.argv[3], 'w')
+time4 = time.time()
+for i in range(1000):
     strlis[i] = twtt(strlis[i],4*random.randrange(0,2,1))
     d.write(strlis[i])
-print('done')
-
-
-
+time5 = time.time()
+print('extracting tweets: ' + str(time3 - time2) + "s, on average: " + str(float(time3 - time2)/20000) + "s\n")
+print('processing tweets: ' + str(time5 - time4) + "s, on average: " + str(float(time5 - time4)/1000) + "s\n")
 
 
 

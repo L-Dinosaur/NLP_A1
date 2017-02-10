@@ -81,34 +81,85 @@ def feat6(string):
     return res
 
 def feat7(string):
-    pass
+    '''
+    This function counts how many commas there are
+    :param string:
+    :return:
+    '''
+    return string.count("/,")
 
 def feat8(string):
-    pass
+    '''
+    This function counts the number of colons
+    :param string:
+    :return:
+    '''
+    return string.count(":") - string.count("/:") + string.count(";")
+
 
 def feat9(string):
-    pass
+    '''
+    This function counts the number of dashes
+    :param string:
+    :return:
+    '''
+    return string.count("-")
 
 def feat10(string):
-    pass
+    '''
+    This function returns the number of parentheses
+    :param string:
+    :return:
+    '''
+    return string.count("/(") + string.count("/)")
 
 def feat11(string):
-    pass
+    '''
+    This function returns the number of elipsis
+    :param string:
+    :return:
+    '''
+
+    return string.count("/:") - string.count(":/") - string.count(";/")
 
 def feat12(string):
-    pass
+    '''
+    This function returns the number of common nouns
+    :param string:
+    :return:
+    '''
+    return string.count("/NN ") + string.count("/NNS ")
 
 def feat13(string):
-    pass
+    '''
+    This function returns the number of proper nouns
+    :param string:
+    :return:
+    '''
+    return string.count("/NNP")
 
 def feat14(string):
-    pass
+    '''
+    This function returns the number of adverbs
+    :param string:
+    :return:
+    '''
+    return string.count("/RB")
 
 def feat15(string):
-    pass
+    '''
+    This function returns the number of wh words
+    :param string:
+    :return:
+    '''
+    return string.count("/W")
 
 def feat16(string):
-    pass
+    '''
+    This function returns the number of
+    :param string:
+    :return:
+    '''
 
 def feat17(string):
     pass
