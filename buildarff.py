@@ -156,19 +156,64 @@ def feat15(string):
 
 def feat16(string):
     '''
-    This function returns the number of
+    This function returns the number of slangs in acronyms
+    :param string:
+    :return:
+    '''
+    res = 0
+    slanglist = ['smh', 'fwb', 'lmfao', 'lmao', 'lms', 'tbh', 'rofl', 'wtf', 'bff', 'wyd', 'lylc',
+              'brb', 'atm', 'imao', 'sml', 'btw', 'bw', 'imho', 'fyi', 'ppl', 'sob', 'ttyl',
+              'imo', 'ltr', 'thx, kk, omg, ttys, afn, bbs, cya, ez, f2f, gtr', 'ic', 'jk', 'k',
+              'ly', 'ya', 'nm', 'np', 'plz', 'ru', 'so', 'tc', 'tmi', 'ym', 'ur', 'u', 'sol']
+    for slang in slanglist:
+        res += string.count(slang)
+    return res
+
+def feat17(string):
+    '''
+    This function returns the number of all capital words
+    :param string:
+    :return:
+    '''
+    res = 0
+    string = re.sub("/[A-Z]+", "", string).split()
+    for substr in string:
+        if(re.match("^[A-Z]{2,}$", substr) != None):
+            res += 1
+    return res
+
+def feat18(string):
+    '''
+    This function returns the average length of sentences
     :param string:
     :return:
     '''
 
-def feat17(string):
-    pass
+    return float(len(string.split())) / (len(string.split("\n")) - 1)
 
-def feat18(string):
-    pass
 
 def feat19(string):
-    pass
+    '''
+    This function counts the average length of tokens
+    :param string:
+    :return:
+    '''
+    string = re.sub("/[A-Z]+", "", string)
+    string = re.sub(" [.,:;\'\"?!%()[\]{}]\/[\#$.,():\"\']", "", string).split()
+    tot_length = 0
+    num_token = len(string)
+    for substr in string:
+        tot_length += len(substr)
+    return tot_length / num_token
+
+
 
 def feat20(string):
-    pass
+    '''
+    This function counts the number of sentences in a tweet
+    :param string:
+    :return:
+    '''
+    return len(string.split("\n") - 1)
+
+import re
